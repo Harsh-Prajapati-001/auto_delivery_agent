@@ -25,4 +25,28 @@ Constraints / assumptions
 - Agent can move 4-connected (up/down/left/right). Diagonals optional (state in report).
 
 ## Installation
-1. Clone the repository:
+1. Clone the repository:git clone https://github.com/yourusername/autonomous-delivery-agent.git
+cd autonomous-delivery-agent
+2. Install dependencies (standard Python libraries, no external needed):pip install -r requirements.txt
+3. (The file is empty since only built-in modules are used: heapq, random, math, time, argparse.)
+
+## Usage
+Run the planners via CLI:python main.py --map <map_name> --start <x> <y> --goal <x> <y> --algorithm <alg> [--dynamic_mode <mode>]
+4. - `--map`: small, medium, large, dynamic
+- `--start` and `--goal`: integers for row col (0-indexed)
+- `--algorithm`: ucs, a_star, sa
+- `--dynamic_mode`: none (default, static), known (space-time for deterministic), unpredictable (replan with SA)
+
+Example:python main.py --map small --start 0 0 --goal 4 4 --algorithm a_star
+5. For experiments (runs all algorithms on all maps, prints tables):python main.py --experiment
+6. For demo (simulates movement on dynamic map with prints for screenshots):python main.py --demo --map dynamic --start 0 0 --goal 9 9 --dynamic_mode unpredictable
+7.
+## Reproducibility
+Maps are hardcoded for simplicity. Random seed is not set for SA, but runs are reproducible by design (deterministic for UCS/A*).
+
+## Dynamic Replanning Proof
+When running with `--dynamic_mode unpredictable` on dynamic map, if replanning occurs, a `replan_log.txt` is generated showing time, agent position, and obstacle position.
+
+## Report
+See `report_template.md` for a template. Run `--experiment` to get results, then fill in.
+
