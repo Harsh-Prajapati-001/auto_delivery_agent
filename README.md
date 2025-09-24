@@ -1,6 +1,3 @@
-# auto_delivery_agent
-# Autonomous Delivery Agent
-
 ## Project Description
 CSA2001 - Fundamentals of AI and ML
 
